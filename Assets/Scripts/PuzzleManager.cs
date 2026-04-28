@@ -89,7 +89,7 @@ public class PuzzleManager : MonoBehaviour
         // 조각 흩뿌리기
         ScatterPieces(boardW, boardH);
 
-        GameManager.Instance.isGameActive = true;
+        if (GameManager.Instance != null) GameManager.Instance.isGameActive = true;
         UIManager.Instance?.RefreshProgress(placedPieces, totalPieces);
     }
 
@@ -126,9 +126,9 @@ public class PuzzleManager : MonoBehaviour
         // 완성 체크
         if (placedPieces >= totalPieces)
         {
-            GameManager.Instance.OnPuzzleCleared();
+            GameManager.Instance?.OnPuzzleCleared();
             OnPuzzleCompleted?.Invoke();
-            UIManager.Instance?.ShowClearScreen(GameManager.Instance.elapsedTime);
+            UIManager.Instance?.ShowClearScreen(GameManager.Instance?.elapsedTime ?? 0f);
             GameSaveLoad.DeleteSave();
         }
         else

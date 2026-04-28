@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 /// <summary>
 /// 개별 퍼즐 조각 – 드래그, 스냅, 회전, 그룹 이동을 담당합니다.
@@ -198,7 +197,7 @@ public class PuzzlePiece : MonoBehaviour
                 (Vector2)transform.position  - CorrectPos,
                 (Vector2)neighbor.transform.position - neighbor.CorrectPos);
 
-            if (d < PuzzleManager.Instance.snapDistance * 2f)
+            if (d < (PuzzleManager.Instance?.snapDistance ?? 0.35f) * 2f)
             {
                 PieceGroup.MergeOrCreate(this, neighbor);
             }
@@ -208,10 +207,11 @@ public class PuzzlePiece : MonoBehaviour
     private int[] GetNeighborIds()
     {
         var pm   = PuzzleManager.Instance;
-        if (pm == null) return new int[0];
+        var gm = GameManager.Instance;
+        if (pm == null || gm == null) return new int[0];
 
-        int cols = GameManager.Instance.columns;
-        int rows = GameManager.Instance.rows;
+        int cols = gm.columns;
+        int rows = gm.rows;
         int col  = Data.col;
         int row  = Data.row;
 

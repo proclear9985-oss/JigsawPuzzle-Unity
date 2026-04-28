@@ -1,6 +1,6 @@
 {
     "name": "JigsawPuzzle.Runtime",
-    "rootNamespace": "JigsawPuzzle",
+    "rootNamespace": "",
     "references": [
         "Unity.TextMeshPro",
         "UnityEngine.UI"

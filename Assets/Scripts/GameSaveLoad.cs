@@ -12,12 +12,15 @@ public static class GameSaveLoad
     // ── 저장 ──────────────────────────────────────────────────────────────
     public static void Save(PuzzleManager pm, Dictionary<int, PuzzlePiece> pieces)
     {
+        var gm = GameManager.Instance;
+        if (gm == null) return;
+
         var saveData = new SaveData
         {
-            imageName   = GameManager.Instance.selectedImageName,
-            columns     = GameManager.Instance.columns,
-            rows        = GameManager.Instance.rows,
-            elapsedTime = GameManager.Instance.elapsedTime,
+            imageName   = gm.selectedImageName,
+            columns     = gm.columns,
+            rows        = gm.rows,
+            elapsedTime = gm.elapsedTime,
             pieces      = new List<PieceState>()
         };
 
@@ -37,7 +40,8 @@ public static class GameSaveLoad
         string   json     = File.ReadAllText(SavePath);
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
-        GameManager.Instance.elapsedTime = saveData.elapsedTime;
+        if (GameManager.Instance != null)
+            GameManager.Instance.elapsedTime = saveData.elapsedTime;
 
         foreach (var state in saveData.pieces)
         {

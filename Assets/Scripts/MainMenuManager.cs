@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using System.Collections;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 메인 메뉴 씬을 담당합니다.
