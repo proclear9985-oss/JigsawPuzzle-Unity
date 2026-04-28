@@ -8,7 +8,7 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
+  m_SceneGUID: 00000000000000000000000000000001
   m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
@@ -18,6 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -35,55 +37,8 @@ LightmapSettings:
     m_BounceScale: 1
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
-    m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
-  m_LightmapEditorSettings:
-    serializedVersion: 12
-    m_Resolution: 2
-    m_BakeResolution: 40
-    m_AtlasSize: 1024
-    m_AO: 0
-    m_AOMaxDistance: 1
-    m_CompAOExponent: 1
-    m_CompAOExponentDirect: 0
-    m_ExtractAmbientOcclusion: 0
-    m_Padding: 2
-    m_LightmapParameters: {fileID: 0}
-    m_LightmapsBakeMode: 1
-    m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
-    m_ReflectionCompression: 2
-    m_MixedBakeMode: 2
-    m_BakeBackend: 1
-    m_PVRSampling: 1
-    m_PVRDirectSampleCount: 32
-    m_PVRSampleCount: 512
-    m_PVRBounces: 2
-    m_PVREnvironmentSampleCount: 256
-    m_PVREnvironmentReferencePointCount: 2048
-    m_PVRFilteringMode: 1
-    m_PVRDenoiserTypeDirect: 1
-    m_PVRDenoiserTypeIndirect: 1
-    m_PVRDenoiserTypeAO: 1
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
-    m_PVREnvironmentMIS: 1
-    m_PVRCulling: 1
-    m_PVRFilteringGaussRadiusDirect: 1
-    m_PVRFilteringGaussRadiusIndirect: 5
-    m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ExportTrainingData: 0
-    m_TrainingDataDestination: TrainingData
-    m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -103,30 +58,30 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-    maxJobWorkers: 0
-    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 
-# ═══════════════════════════════════════════
-# Main Camera  (CameraController 부착)
-# ═══════════════════════════════════════════
---- !u!1 &1001
+# ════════════════════════════════════════════
+# Main Camera + CameraController
+# ════════════════════════════════════════════
+--- !u!1 &1000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 1001}
   - component: {fileID: 1002}
   - component: {fileID: 1003}
   - component: {fileID: 1004}
-  - component: {fileID: 1005}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1002
+--- !u!4 &1001
 Transform:
   m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -135,13 +90,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!20 &1003
+--- !u!20 &1002
 Camera:
   m_ObjectHideFlags: 0
-  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1, g: 0.1, b: 0.15, a: 1}
+  m_BackGroundColor: {r: 0.18, g: 0.18, b: 0.18, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -158,7 +112,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -166,23 +120,22 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &1004
+--- !u!81 &1003
 AudioListener:
   m_ObjectHideFlags: 0
-  m_Enabled: 1
---- !u!114 &1005
+--- !u!114 &1004
 MonoBehaviour:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000}
   m_Enabled: 1
-  m_Script: {fileID: 11500000, guid: 00000000000000000000000000000006, type: 3}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: CameraController, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   zoomSpeed: 2
@@ -194,23 +147,23 @@ MonoBehaviour:
   useBounds: 1
   boundsPadding: 3
 
-# ═══════════════════════════════════════════
+# ════════════════════════════════════════════
 # EventSystem
-# ═══════════════════════════════════════════
---- !u!1 &2001
+# ════════════════════════════════════════════
+--- !u!1 &2000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 2001}
   - component: {fileID: 2002}
   - component: {fileID: 2003}
-  - component: {fileID: 2004}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!4 &2002
+--- !u!4 &2001
 Transform:
   m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -219,21 +172,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &2003
+--- !u!114 &2002
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -619905303, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &2004
+--- !u!114 &2003
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: 1997211142, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 1077351063, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   m_HorizontalAxis: Horizontal
@@ -244,92 +195,45 @@ MonoBehaviour:
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
 
-# ═══════════════════════════════════════════
-# PuzzleRoot  (보드 루트 + 흩뿌림 루트)
-# ═══════════════════════════════════════════
---- !u!1 &3001
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3002}
-  m_Layer: 0
-  m_Name: PuzzleRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_IsActive: 1
---- !u!4 &3002
-Transform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3012}
-  - {fileID: 3022}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-
+# ════════════════════════════════════════════
 # BoardRoot
---- !u!1 &3010
+# ════════════════════════════════════════════
+--- !u!1 &3000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3012}
+  - component: {fileID: 3001}
   m_Layer: 0
   m_Name: BoardRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!4 &3012
+--- !u!4 &3001
 Transform:
   m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3002}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 
+# ════════════════════════════════════════════
 # ScatterRoot
---- !u!1 &3020
+# ════════════════════════════════════════════
+--- !u!1 &4000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3022}
+  - component: {fileID: 4001}
   m_Layer: 0
   m_Name: ScatterRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!4 &3022
-Transform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3002}
-  m_RootOrder: 1
-
-# ═══════════════════════════════════════════
-# PuzzleManager GameObject
-# ═══════════════════════════════════════════
---- !u!1 &4001
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4002}
-  - component: {fileID: 4003}
-  m_Layer: 0
-  m_Name: PuzzleManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_IsActive: 1
---- !u!4 &4002
+--- !u!4 &4001
 Transform:
   m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -338,50 +242,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &4003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: 11500000, guid: 00000000000000000000000000000007, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  piecePrefab: {fileID: 100000, guid: 00000000000000000000000000000020, type: 3}
-  boardRoot: {fileID: 3012}
-  scatterRoot: {fileID: 3022}
-  pieceWorldSize: 1
-  snapDistance: 0.35
-  totalPieces: 0
-  placedPieces: 0
 
-# ═══════════════════════════════════════════
-# ConfettiEffect GameObject
-# ═══════════════════════════════════════════
---- !u!1 &5001
+# ════════════════════════════════════════════
+# PuzzleManager + ConfettiEffect
+# ════════════════════════════════════════════
+--- !u!1 &5000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 5001}
   - component: {fileID: 5002}
   - component: {fileID: 5003}
   m_Layer: 0
-  m_Name: ConfettiEffect
+  m_Name: PuzzleManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!4 &5002
+--- !u!4 &5001
 Transform:
   m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &5002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: PuzzleManager, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  piecePrefab: {fileID: 0}
+  boardRoot: {fileID: 3001}
+  scatterRoot: {fileID: 4001}
+  pieceWorldSize: 1
+  snapDistance: 0.35
 --- !u!114 &5003
 MonoBehaviour:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000}
   m_Enabled: 1
-  m_Script: {fileID: 11500000, guid: 00000000000000000000000000000008, type: 3}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ConfettiEffect, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   burstCount: 150
@@ -389,34 +302,35 @@ MonoBehaviour:
   lifetime: 3
   spread: 6
 
-# ═══════════════════════════════════════════
-# GameUICanvas
-# ═══════════════════════════════════════════
---- !u!1 &10001
+# ════════════════════════════════════════════
+# Canvas (GameUICanvas) + UIManager
+# ════════════════════════════════════════════
+--- !u!1 &6000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 10002}
-  - component: {fileID: 10003}
-  - component: {fileID: 10004}
-  - component: {fileID: 10005}
+  - component: {fileID: 6001}
+  - component: {fileID: 6002}
+  - component: {fileID: 6003}
+  - component: {fileID: 6004}
+  - component: {fileID: 6005}
   m_Layer: 5
-  m_Name: GameUICanvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!224 &10002
+--- !u!224 &6001
 RectTransform:
   m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 11002}
-  - {fileID: 20002}
-  - {fileID: 30002}
-  - {fileID: 40002}
+  - {fileID: 7001}
+  - {fileID: 8001}
+  - {fileID: 9001}
+  - {fileID: 10001}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
@@ -424,10 +338,9 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!223 &10003
+--- !u!223 &6002
 Canvas:
   m_ObjectHideFlags: 0
-  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -435,1325 +348,660 @@ Canvas:
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &10004
+--- !u!114 &6003
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!114 &10005
+--- !u!114 &6004
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: 11500000, guid: 00000000000000000000000000000009, type: 3}
+  m_Script: {fileID: -1302539562, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  timerText: {fileID: 11031}
-  progressText: {fileID: 11041}
-  progressSlider: {fileID: 11051}
-  previewButton: {fileID: 11061}
-  previewPanel: {fileID: 11071}
-  previewImage: {fileID: 11081}
-  edgeSortButton: {fileID: 11091}
-  pauseButton: {fileID: 11101}
-  pausePanel: {fileID: 20001}
-  resumeButton: {fileID: 20101}
-  restartButton: {fileID: 20201}
-  mainMenuButton: {fileID: 20301}
-  clearPanel: {fileID: 30001}
-  clearTimeText: {fileID: 30101}
-  clearPiecesText: {fileID: 30201}
-  clearMenuButton: {fileID: 30301}
-  clearRestartButton: {fileID: 30401}
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+--- !u!114 &6005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: UIManager, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  timerText: {fileID: 7102}
+  progressText: {fileID: 7202}
+  progressSlider: {fileID: 7302}
+  previewButton: {fileID: 7402}
+  previewPanel: {fileID: 8001}
+  previewImage: {fileID: 8102}
+  edgeSortButton: {fileID: 7502}
+  pausePanel: {fileID: 9001}
+  pauseButton: {fileID: 7602}
+  resumeButton: {fileID: 9102}
+  restartButton: {fileID: 9202}
+  mainMenuButton: {fileID: 9302}
+  clearPanel: {fileID: 10001}
+  clearTimeText: {fileID: 10102}
+  clearPiecesText: {fileID: 10202}
+  clearMenuButton: {fileID: 10302}
+  clearRestartButton: {fileID: 10402}
   confettiEffect: {fileID: 0}
 
-# ═══════════════════════════════════════════
-# HUD Panel (top bar)
-# ═══════════════════════════════════════════
---- !u!1 &11001
+# ════════════════════════════════════════════
+# HUDPanel
+# ════════════════════════════════════════════
+--- !u!1 &7000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11002}
-  - component: {fileID: 11003}
+  - component: {fileID: 7001}
+  - component: {fileID: 7002}
   m_Layer: 5
   m_Name: HUDPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!224 &11002
+--- !u!224 &7001
 RectTransform:
   m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 11021}
-  - {fileID: 11031}
-  - {fileID: 11041}
-  - {fileID: 11051}
-  - {fileID: 11061}
-  - {fileID: 11071}
-  - {fileID: 11091}
-  - {fileID: 11101}
-  m_Father: {fileID: 10002}
-  m_RootOrder: 0
+  - {fileID: 7101}
+  - {fileID: 7201}
+  - {fileID: 7301}
+  - {fileID: 7401}
+  - {fileID: 7501}
+  - {fileID: 7601}
+  m_Father: {fileID: 6001}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 70}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &11003
+--- !u!114 &7002
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  m_Color: {r: 0, g: 0, b: 0, a: 0.75}
+  m_Color: {r: 0.05, g: 0.05, b: 0.1, a: 0.85}
 
-# HUD bg label
---- !u!1 &11020
+# TimerText
+--- !u!1 &7100
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11021}
-  - component: {fileID: 11022}
-  m_Layer: 5
-  m_Name: GameLabel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_IsActive: 1
---- !u!224 &11021
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 11002}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 40}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  m_text: Jigsaw Puzzle
-  m_fontSize: 26
-  m_fontStyle: 1
-  m_color: {r: 1, g: 0.85, b: 0.2, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
-
-# Timer Text
---- !u!1 &11030
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11032}
-  - component: {fileID: 11031}
+  - component: {fileID: 7101}
+  - component: {fileID: 7102}
   m_Layer: 5
   m_Name: TimerText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!224 &11032
+--- !u!224 &7101
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 11002}
-  m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 160, y: 50}
-  m_Pivot: {x: 0, y: 0.5}
---- !u!114 &11031
+  m_Father: {fileID: 7001}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 90, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7102
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
   m_text: "00:00"
-  m_fontSize: 28
+  m_fontSize: 32
   m_fontStyle: 1
   m_color: {r: 1, g: 1, b: 1, a: 1}
   m_alignment: 4
-  m_enableWordWrapping: 0
 
-# Progress Text
---- !u!1 &11040
+# ProgressText
+--- !u!1 &7200
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11042}
-  - component: {fileID: 11041}
+  - component: {fileID: 7201}
+  - component: {fileID: 7202}
   m_Layer: 5
   m_Name: ProgressText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!224 &11042
+--- !u!224 &7201
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 11002}
-  m_RootOrder: 2
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 8}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 1, y: 0.5}
---- !u!114 &11041
+  m_Father: {fileID: 7001}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -160, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7202
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
   m_text: "0 / 0"
-  m_fontSize: 20
-  m_color: {r: 0.9, g: 0.9, b: 1, a: 1}
-  m_alignment: 1028
-  m_enableWordWrapping: 0
+  m_fontSize: 26
+  m_color: {r: 0.8, g: 1, b: 0.8, a: 1}
+  m_alignment: 4
 
-# Progress Slider
---- !u!1 &11050
+# ProgressSlider
+--- !u!1 &7300
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11052}
-  - component: {fileID: 11051}
+  - component: {fileID: 7301}
+  - component: {fileID: 7302}
   m_Layer: 5
   m_Name: ProgressSlider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!224 &11052
+--- !u!224 &7301
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 11053}
-  - {fileID: 11055}
-  m_Father: {fileID: 11002}
-  m_RootOrder: 3
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -12}
-  m_SizeDelta: {x: 160, y: 10}
-  m_Pivot: {x: 1, y: 0.5}
---- !u!114 &11051
+  m_Father: {fileID: 7001}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 80, y: 0}
+  m_SizeDelta: {x: 300, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7302
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: -113659832, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Interactable: 0
-  m_TargetGraphic: {fileID: 11056}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
   m_Value: 0
-  m_FillRect: {fileID: 11055}
-  m_HandleRect: {fileID: 0}
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!1 &11053
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11054}
-  - component: {fileID: 11053bg}
-  m_Layer: 5
-  m_Name: Background
-  m_IsActive: 1
---- !u!224 &11054
-RectTransform:
-  m_Father: {fileID: 11052}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11053bg
-MonoBehaviour:
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.3, g: 0.3, b: 0.3, a: 1}
---- !u!1 &11055
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11058}
-  - component: {fileID: 11057}
-  m_Layer: 5
-  m_Name: Fill Area
-  m_IsActive: 1
---- !u!224 &11058
-RectTransform:
-  m_Father: {fileID: 11052}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
-  m_Children:
-  - {fileID: 11059}
---- !u!1 &11059
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11060}
-  - component: {fileID: 11056}
-  m_Layer: 5
-  m_Name: Fill
-  m_IsActive: 1
---- !u!224 &11060
-RectTransform:
-  m_Father: {fileID: 11058}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0.5}
---- !u!114 &11056
-MonoBehaviour:
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.2, g: 0.8, b: 0.4, a: 1}
---- !u!114 &11057
-MonoBehaviour:
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_WholeNumbers: 1
+  m_MinValue: 0
+  m_MaxValue: 25
 
-# Preview Button
---- !u!1 &11061
+# PreviewButton
+--- !u!1 &7400
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11063}
-  - component: {fileID: 11064}
-  - component: {fileID: 11065}
-  - component: {fileID: 11061}
+  - component: {fileID: 7401}
+  - component: {fileID: 7403}
+  - component: {fileID: 7402}
   m_Layer: 5
   m_Name: PreviewButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!224 &11063
+--- !u!224 &7401
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 11066}
-  m_Father: {fileID: 11002}
-  m_RootOrder: 4
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 280, y: 0}
-  m_SizeDelta: {x: 110, y: 44}
+  m_Father: {fileID: 7001}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -250, y: 0}
+  m_SizeDelta: {x: 120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11064
+--- !u!114 &7403
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.25, g: 0.25, b: 0.35, a: 0.9}
---- !u!114 &11061
+  m_Color: {r: 0.2, g: 0.5, b: 0.9, a: 1}
+--- !u!114 &7402
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 11064}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.25, g: 0.25, b: 0.35, a: 0.9}
-    m_HighlightedColor: {r: 0.35, g: 0.35, b: 0.5, a: 1}
-    m_PressedColor: {r: 0.15, g: 0.15, b: 0.25, a: 1}
-    m_SelectedColor: {r: 0.25, g: 0.25, b: 0.35, a: 0.9}
-    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &11065
-MonoBehaviour:
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &11066
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11067}
-  - component: {fileID: 11068}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_IsActive: 1
---- !u!224 &11067
-RectTransform:
-  m_Father: {fileID: 11063}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11068
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "미리보기"
-  m_fontSize: 18
-  m_color: {r: 1, g: 1, b: 1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
+  m_TargetGraphic: {fileID: 7403}
 
-# Preview Panel
---- !u!1 &11071
+# EdgeSortButton
+--- !u!1 &7500
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11073}
-  - component: {fileID: 11074}
+  - component: {fileID: 7501}
+  - component: {fileID: 7503}
+  - component: {fileID: 7502}
+  m_Layer: 5
+  m_Name: EdgeSortButton
+  m_IsActive: 1
+--- !u!224 &7501
+RectTransform:
+  m_Father: {fileID: 7001}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -120, y: 0}
+  m_SizeDelta: {x: 120, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7503
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.8, g: 0.6, b: 0.1, a: 1}
+--- !u!114 &7502
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7503}
+
+# PauseButton
+--- !u!1 &7600
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7601}
+  - component: {fileID: 7603}
+  - component: {fileID: 7602}
+  m_Layer: 5
+  m_Name: PauseButton
+  m_IsActive: 1
+--- !u!224 &7601
+RectTransform:
+  m_Father: {fileID: 7001}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -30, y: 0}
+  m_SizeDelta: {x: 50, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7603
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &7602
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7603}
+
+# ════════════════════════════════════════════
+# PreviewPanel (기본 비활성)
+# ════════════════════════════════════════════
+--- !u!1 &8000
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8001}
+  - component: {fileID: 8002}
   m_Layer: 5
   m_Name: PreviewPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 0
---- !u!224 &11073
+--- !u!224 &8001
 RectTransform:
-  m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 11081}
-  m_Father: {fileID: 11002}
-  m_RootOrder: 5
+  - {fileID: 8101}
+  m_Father: {fileID: 6001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 640, y: 480}
+  m_SizeDelta: {x: 700, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11074
+--- !u!114 &8002
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.85}
 
-# Preview RawImage
---- !u!1 &11080
+# PreviewImage
+--- !u!1 &8100
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11082}
-  - component: {fileID: 11081}
+  - component: {fileID: 8101}
+  - component: {fileID: 8102}
   m_Layer: 5
   m_Name: PreviewImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
   m_IsActive: 1
---- !u!224 &11082
+--- !u!224 &8101
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 11073}
-  m_RootOrder: 0
+  m_Father: {fileID: 8001}
   m_AnchorMin: {x: 0.05, y: 0.05}
   m_AnchorMax: {x: 0.95, y: 0.95}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11081
+--- !u!114 &8102
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: -1210905831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  texture: {fileID: 0}
 
-# Edge Sort Button
---- !u!1 &11091
+# ════════════════════════════════════════════
+# PausePanel (기본 비활성)
+# ════════════════════════════════════════════
+--- !u!1 &9000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 11093}
-  - component: {fileID: 11094}
-  - component: {fileID: 11095}
-  - component: {fileID: 11091}
-  m_Layer: 5
-  m_Name: EdgeSortButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_IsActive: 1
---- !u!224 &11093
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 11096}
-  m_Father: {fileID: 11002}
-  m_RootOrder: 6
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: 0}
-  m_SizeDelta: {x: 110, y: 44}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11094
-MonoBehaviour:
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.25, g: 0.35, b: 0.25, a: 0.9}
---- !u!114 &11091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 11094}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.25, g: 0.35, b: 0.25, a: 0.9}
-    m_HighlightedColor: {r: 0.35, g: 0.5, b: 0.35, a: 1}
-    m_PressedColor: {r: 0.15, g: 0.25, b: 0.15, a: 1}
-    m_SelectedColor: {r: 0.25, g: 0.35, b: 0.25, a: 0.9}
-    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &11095
-MonoBehaviour:
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &11096
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11097}
-  - component: {fileID: 11098}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_IsActive: 1
---- !u!224 &11097
-RectTransform:
-  m_Father: {fileID: 11093}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11098
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "테두리 정렬"
-  m_fontSize: 16
-  m_color: {r: 1, g: 1, b: 1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
-
-# Pause Button
---- !u!1 &11101
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11103}
-  - component: {fileID: 11104}
-  - component: {fileID: 11105}
-  - component: {fileID: 11101}
-  m_Layer: 5
-  m_Name: PauseButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_IsActive: 1
---- !u!224 &11103
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 11106}
-  m_Father: {fileID: 11002}
-  m_RootOrder: 7
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -35, y: 0}
-  m_SizeDelta: {x: 50, y: 44}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11104
-MonoBehaviour:
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.25, g: 0.25, b: 0.35, a: 0.9}
---- !u!114 &11101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 11104}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.25, g: 0.25, b: 0.35, a: 0.9}
-    m_HighlightedColor: {r: 0.35, g: 0.35, b: 0.5, a: 1}
-    m_PressedColor: {r: 0.15, g: 0.15, b: 0.25, a: 1}
-    m_SelectedColor: {r: 0.25, g: 0.25, b: 0.35, a: 0.9}
-    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &11105
-MonoBehaviour:
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &11106
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 11107}
-  - component: {fileID: 11108}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_IsActive: 1
---- !u!224 &11107
-RectTransform:
-  m_Father: {fileID: 11103}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &11108
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "II"
-  m_fontSize: 22
-  m_fontStyle: 1
-  m_color: {r: 1, g: 1, b: 1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
-
-# ═══════════════════════════════════════════
-# Pause Panel
-# ═══════════════════════════════════════════
---- !u!1 &20001
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 20002}
-  - component: {fileID: 20003}
+  - component: {fileID: 9001}
+  - component: {fileID: 9002}
   m_Layer: 5
   m_Name: PausePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 0
---- !u!224 &20002
+--- !u!224 &9001
 RectTransform:
-  m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 20011}
-  - {fileID: 20101}
-  - {fileID: 20201}
-  - {fileID: 20301}
-  m_Father: {fileID: 10002}
-  m_RootOrder: 1
+  - {fileID: 9051}
+  - {fileID: 9101}
+  - {fileID: 9201}
+  - {fileID: 9301}
+  m_Father: {fileID: 6001}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &20003
+--- !u!114 &9002
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.75}
 
-# Pause Title
---- !u!1 &20010
+# PauseTitleText
+--- !u!1 &9050
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 20011}
-  - component: {fileID: 20012}
+  - component: {fileID: 9051}
+  - component: {fileID: 9052}
   m_Layer: 5
-  m_Name: PauseTitle
+  m_Name: PauseTitleText
   m_IsActive: 1
---- !u!224 &20011
+--- !u!224 &9051
 RectTransform:
-  m_Father: {fileID: 20002}
-  m_RootOrder: 0
+  m_Father: {fileID: 9001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 160}
+  m_AnchoredPosition: {x: 0, y: 120}
   m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &20012
+--- !u!114 &9052
 MonoBehaviour:
   m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "일시정지"
-  m_fontSize: 56
+  m_text: "PAUSE"
+  m_fontSize: 48
   m_fontStyle: 1
-  m_color: {r: 1, g: 0.85, b: 0.2, a: 1}
+  m_color: {r: 1, g: 1, b: 1, a: 1}
   m_alignment: 4
-  m_enableWordWrapping: 0
 
-# Resume Button
---- !u!1 &20100
+# ResumeButton
+--- !u!1 &9100
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 20103}
-  - component: {fileID: 20104}
-  - component: {fileID: 20105}
-  - component: {fileID: 20101}
+  - component: {fileID: 9101}
+  - component: {fileID: 9103}
+  - component: {fileID: 9102}
   m_Layer: 5
   m_Name: ResumeButton
   m_IsActive: 1
---- !u!224 &20103
+--- !u!224 &9101
 RectTransform:
-  m_Father: {fileID: 20002}
-  m_RootOrder: 1
+  m_Father: {fileID: 9001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 60}
+  m_AnchoredPosition: {x: 0, y: 30}
   m_SizeDelta: {x: 280, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
-  m_Children:
-  - {fileID: 20111}
---- !u!114 &20104
+--- !u!114 &9103
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.2, g: 0.6, b: 1, a: 1}
---- !u!114 &20101
+  m_Color: {r: 0.2, g: 0.8, b: 0.3, a: 1}
+--- !u!114 &9102
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 20104}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.2, g: 0.6, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.3, g: 0.7, b: 1, a: 1}
-    m_PressedColor: {r: 0.1, g: 0.4, b: 0.8, a: 1}
-    m_SelectedColor: {r: 0.2, g: 0.6, b: 1, a: 1}
-    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &20105
-MonoBehaviour:
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &20110
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 20111}
-  - component: {fileID: 20112}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_IsActive: 1
---- !u!224 &20111
-RectTransform:
-  m_Father: {fileID: 20103}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &20112
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "▶ 계속하기"
-  m_fontSize: 26
-  m_fontStyle: 1
-  m_color: {r: 1, g: 1, b: 1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
+  m_TargetGraphic: {fileID: 9103}
 
-# Restart Button (pause)
---- !u!1 &20200
+# RestartButton
+--- !u!1 &9200
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 20203}
-  - component: {fileID: 20204}
-  - component: {fileID: 20205}
-  - component: {fileID: 20201}
+  - component: {fileID: 9201}
+  - component: {fileID: 9203}
+  - component: {fileID: 9202}
   m_Layer: 5
   m_Name: RestartButton
   m_IsActive: 1
---- !u!224 &20203
+--- !u!224 &9201
 RectTransform:
-  m_Father: {fileID: 20002}
-  m_RootOrder: 2
+  m_Father: {fileID: 9001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 280, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
-  m_Children:
-  - {fileID: 20211}
---- !u!114 &20204
+--- !u!114 &9203
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.7, g: 0.4, b: 0.1, a: 1}
---- !u!114 &20201
+  m_Color: {r: 0.9, g: 0.6, b: 0.1, a: 1}
+--- !u!114 &9202
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 20204}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.7, g: 0.4, b: 0.1, a: 1}
-    m_HighlightedColor: {r: 0.85, g: 0.5, b: 0.2, a: 1}
-    m_PressedColor: {r: 0.5, g: 0.3, b: 0.0, a: 1}
-    m_SelectedColor: {r: 0.7, g: 0.4, b: 0.1, a: 1}
-    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &20205
-MonoBehaviour:
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &20210
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 20211}
-  - component: {fileID: 20212}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_IsActive: 1
---- !u!224 &20211
-RectTransform:
-  m_Father: {fileID: 20203}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &20212
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "↺ 다시 시작"
-  m_fontSize: 26
-  m_fontStyle: 1
-  m_color: {r: 1, g: 1, b: 1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
+  m_TargetGraphic: {fileID: 9203}
 
-# Main Menu Button (pause)
---- !u!1 &20300
+# MainMenuButton
+--- !u!1 &9300
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 20303}
-  - component: {fileID: 20304}
-  - component: {fileID: 20305}
-  - component: {fileID: 20301}
+  - component: {fileID: 9301}
+  - component: {fileID: 9303}
+  - component: {fileID: 9302}
   m_Layer: 5
   m_Name: MainMenuButton
   m_IsActive: 1
---- !u!224 &20303
+--- !u!224 &9301
 RectTransform:
-  m_Father: {fileID: 20002}
-  m_RootOrder: 3
+  m_Father: {fileID: 9001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -130}
   m_SizeDelta: {x: 280, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
-  m_Children:
-  - {fileID: 20311}
---- !u!114 &20304
+--- !u!114 &9303
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.4, g: 0.4, b: 0.5, a: 1}
---- !u!114 &20301
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &9302
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 20304}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.4, g: 0.4, b: 0.5, a: 1}
-    m_HighlightedColor: {r: 0.5, g: 0.5, b: 0.6, a: 1}
-    m_PressedColor: {r: 0.3, g: 0.3, b: 0.4, a: 1}
-    m_SelectedColor: {r: 0.4, g: 0.4, b: 0.5, a: 1}
-    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &20305
-MonoBehaviour:
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &20310
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 20311}
-  - component: {fileID: 20312}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_IsActive: 1
---- !u!224 &20311
-RectTransform:
-  m_Father: {fileID: 20303}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &20312
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "⌂ 메인 메뉴"
-  m_fontSize: 26
-  m_fontStyle: 1
-  m_color: {r: 1, g: 1, b: 1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
+  m_TargetGraphic: {fileID: 9303}
 
-# ═══════════════════════════════════════════
-# Clear Panel (퍼즐 완성 화면)
-# ═══════════════════════════════════════════
---- !u!1 &30001
+# ════════════════════════════════════════════
+# ClearPanel (기본 비활성)
+# ════════════════════════════════════════════
+--- !u!1 &10000
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 30002}
-  - component: {fileID: 30003}
+  - component: {fileID: 10001}
+  - component: {fileID: 10002}
   m_Layer: 5
   m_Name: ClearPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_IsActive: 0
---- !u!224 &30002
+--- !u!224 &10001
 RectTransform:
-  m_ObjectHideFlags: 0
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 30011}
-  - {fileID: 30021}
-  - {fileID: 30101}
-  - {fileID: 30201}
-  - {fileID: 30301}
-  - {fileID: 30401}
-  m_Father: {fileID: 10002}
-  m_RootOrder: 2
+  - {fileID: 10051}
+  - {fileID: 10101}
+  - {fileID: 10201}
+  - {fileID: 10301}
+  - {fileID: 10401}
+  m_Father: {fileID: 6001}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &30003
+--- !u!114 &10002
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.8}
 
-# Clear Title
---- !u!1 &30010
+# ClearTitleText
+--- !u!1 &10050
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 30011}
-  - component: {fileID: 30012}
+  - component: {fileID: 10051}
+  - component: {fileID: 10052}
   m_Layer: 5
-  m_Name: ClearTitle
+  m_Name: ClearTitleText
   m_IsActive: 1
---- !u!224 &30011
+--- !u!224 &10051
 RectTransform:
-  m_Father: {fileID: 30002}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 220}
-  m_SizeDelta: {x: 600, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &30012
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "🎉 퍼즐 완성! 🎉"
-  m_fontSize: 60
-  m_fontStyle: 1
-  m_color: {r: 1, g: 0.85, b: 0.1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
-
-# Clear Subtitle
---- !u!1 &30020
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 30021}
-  - component: {fileID: 30022}
-  m_Layer: 5
-  m_Name: ClearSubtitle
-  m_IsActive: 1
---- !u!224 &30021
-RectTransform:
-  m_Father: {fileID: 30002}
-  m_RootOrder: 1
+  m_Father: {fileID: 10001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 150}
-  m_SizeDelta: {x: 500, y: 50}
+  m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &30022
+--- !u!114 &10052
 MonoBehaviour:
   m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "축하합니다!"
-  m_fontSize: 30
-  m_color: {r: 0.9, g: 0.9, b: 1, a: 1}
+  m_text: "Puzzle Complete!"
+  m_fontSize: 60
+  m_fontStyle: 1
+  m_color: {r: 1, g: 0.9, b: 0.1, a: 1}
   m_alignment: 4
-  m_enableWordWrapping: 0
 
-# Clear Time Text
---- !u!1 &30100
+# ClearTimeText
+--- !u!1 &10100
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 30102}
-  - component: {fileID: 30101}
+  - component: {fileID: 10101}
+  - component: {fileID: 10102}
   m_Layer: 5
   m_Name: ClearTimeText
   m_IsActive: 1
---- !u!224 &30102
+--- !u!224 &10101
 RectTransform:
-  m_Father: {fileID: 30002}
-  m_RootOrder: 2
+  m_Father: {fileID: 10001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 400, y: 55}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &30101
+--- !u!114 &10102
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  m_text: "완성 시간: 00:00"
+  m_text: "Time: 00:00"
   m_fontSize: 34
-  m_fontStyle: 1
-  m_color: {r: 0.3, g: 1, b: 0.5, a: 1}
+  m_color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   m_alignment: 4
-  m_enableWordWrapping: 0
 
-# Clear Pieces Text
---- !u!1 &30200
+# ClearPiecesText
+--- !u!1 &10200
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 30202}
-  - component: {fileID: 30201}
+  - component: {fileID: 10201}
+  - component: {fileID: 10202}
   m_Layer: 5
   m_Name: ClearPiecesText
   m_IsActive: 1
---- !u!224 &30202
+--- !u!224 &10201
 RectTransform:
-  m_Father: {fileID: 30002}
-  m_RootOrder: 3
+  m_Father: {fileID: 10001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_AnchoredPosition: {x: 0, y: 10}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &30201
+--- !u!114 &10202
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  m_text: "총 조각: 0개"
-  m_fontSize: 26
-  m_color: {r: 0.8, g: 0.8, b: 1, a: 1}
+  m_text: "Pieces: 25"
+  m_fontSize: 28
+  m_color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   m_alignment: 4
-  m_enableWordWrapping: 0
 
-# Clear Menu Button
---- !u!1 &30300
+# ClearMenuButton
+--- !u!1 &10300
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 30303}
-  - component: {fileID: 30304}
-  - component: {fileID: 30305}
-  - component: {fileID: 30301}
+  - component: {fileID: 10301}
+  - component: {fileID: 10303}
+  - component: {fileID: 10302}
   m_Layer: 5
   m_Name: ClearMenuButton
   m_IsActive: 1
---- !u!224 &30303
+--- !u!224 &10301
 RectTransform:
-  m_Father: {fileID: 30002}
-  m_RootOrder: 4
+  m_Father: {fileID: 10001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -160, y: -120}
-  m_SizeDelta: {x: 260, y: 60}
+  m_AnchoredPosition: {x: -160, y: -80}
+  m_SizeDelta: {x: 260, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
-  m_Children:
-  - {fileID: 30311}
---- !u!114 &30304
+--- !u!114 &10303
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.4, g: 0.4, b: 0.5, a: 1}
---- !u!114 &30301
+  m_Color: {r: 0.4, g: 0.4, b: 0.8, a: 1}
+--- !u!114 &10302
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 30304}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.4, g: 0.4, b: 0.5, a: 1}
-    m_HighlightedColor: {r: 0.5, g: 0.5, b: 0.6, a: 1}
-    m_PressedColor: {r: 0.3, g: 0.3, b: 0.4, a: 1}
-    m_SelectedColor: {r: 0.4, g: 0.4, b: 0.5, a: 1}
-    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &30305
-MonoBehaviour:
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &30310
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 30311}
-  - component: {fileID: 30312}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_IsActive: 1
---- !u!224 &30311
-RectTransform:
-  m_Father: {fileID: 30303}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &30312
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "⌂ 메인 메뉴"
-  m_fontSize: 24
-  m_fontStyle: 1
-  m_color: {r: 1, g: 1, b: 1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
+  m_TargetGraphic: {fileID: 10303}
 
-# Clear Restart Button
---- !u!1 &30400
+# ClearRestartButton
+--- !u!1 &10400
 GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 30403}
-  - component: {fileID: 30404}
-  - component: {fileID: 30405}
-  - component: {fileID: 30401}
+  - component: {fileID: 10401}
+  - component: {fileID: 10403}
+  - component: {fileID: 10402}
   m_Layer: 5
   m_Name: ClearRestartButton
   m_IsActive: 1
---- !u!224 &30403
+--- !u!224 &10401
 RectTransform:
-  m_Father: {fileID: 30002}
-  m_RootOrder: 5
+  m_Father: {fileID: 10001}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 160, y: -120}
-  m_SizeDelta: {x: 260, y: 60}
+  m_AnchoredPosition: {x: 160, y: -80}
+  m_SizeDelta: {x: 260, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
-  m_Children:
-  - {fileID: 30411}
---- !u!114 &30404
+--- !u!114 &10403
 MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Color: {r: 0.2, g: 0.6, b: 1, a: 1}
---- !u!114 &30401
+  m_Color: {r: 0.1, g: 0.7, b: 0.4, a: 1}
+--- !u!114 &10402
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
   m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 30404}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0.2, g: 0.6, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.3, g: 0.7, b: 1, a: 1}
-    m_PressedColor: {r: 0.1, g: 0.4, b: 0.8, a: 1}
-    m_SelectedColor: {r: 0.2, g: 0.6, b: 1, a: 1}
-    m_DisabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &30405
-MonoBehaviour:
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &30410
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 30411}
-  - component: {fileID: 30412}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_IsActive: 1
---- !u!224 &30411
-RectTransform:
-  m_Father: {fileID: 30403}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &30412
-MonoBehaviour:
-  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
-  m_text: "↺ 다시 시작"
-  m_fontSize: 24
-  m_fontStyle: 1
-  m_color: {r: 1, g: 1, b: 1, a: 1}
-  m_alignment: 4
-  m_enableWordWrapping: 0
-
-# ═══════════════════════════════════════════
-# Board Outline (보드 테두리 표시)
-# ═══════════════════════════════════════════
---- !u!1 &40001
-GameObject:
-  m_ObjectHideFlags: 0
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 40002}
-  - component: {fileID: 40003}
-  m_Layer: 5
-  m_Name: BoardOutlinePanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_IsActive: 1
---- !u!224 &40002
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 10002}
-  m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &40003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_Enabled: 1
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_TargetGraphic: {fileID: 10403}
