@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &200000
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200002}
+  - component: {fileID: 200003}
+  - component: {fileID: 200004}
+  - component: {fileID: 200005}
+  m_Layer: 5
+  m_Name: ThumbnailItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_IsActive: 1
+--- !u!224 &200002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 200012}
+  - {fileID: 200022}
+  - {fileID: 200032}
+  m_Father: {fileID: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 180, y: 180}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &200003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.15, g: 0.15, b: 0.2, a: 1}
+--- !u!114 &200004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 200003}
+--- !u!114 &200005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ThumbnailItem, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  thumbnail: {fileID: 200013}
+  nameLabel: {fileID: 200023}
+  selectButton: {fileID: 200004}
+  selectedBorder: {fileID: 200030}
+
+# ThumbnailImage (RawImage)
+--- !u!1 &200010
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200012}
+  - component: {fileID: 200013}
+  m_Layer: 5
+  m_Name: ThumbnailImage
+  m_IsActive: 1
+--- !u!224 &200012
+RectTransform:
+  m_Father: {fileID: 200002}
+  m_AnchorMin: {x: 0, y: 0.2}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -8, y: -8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &200013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: -1210905831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  texture: {fileID: 0}
+
+# NameLabel (TextMeshPro)
+--- !u!1 &200020
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200022}
+  - component: {fileID: 200023}
+  m_Layer: 5
+  m_Name: NameLabel
+  m_IsActive: 1
+--- !u!224 &200022
+RectTransform:
+  m_Father: {fileID: 200002}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.22}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &200023
+MonoBehaviour:
+  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
+  m_text: "image_name"
+  m_fontSize: 14
+  m_color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+  m_alignment: 4
+  m_enableWordWrapping: 0
+  m_overflowMode: 3
+
+# SelectedBorder (강조 테두리, 기본 비활성)
+--- !u!1 &200030
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200032}
+  - component: {fileID: 200033}
+  m_Layer: 5
+  m_Name: SelectedBorder
+  m_IsActive: 0
+--- !u!224 &200032
+RectTransform:
+  m_Father: {fileID: 200002}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &200033
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 1, g: 0.85, b: 0, a: 1}
+  m_FillCenter: 0

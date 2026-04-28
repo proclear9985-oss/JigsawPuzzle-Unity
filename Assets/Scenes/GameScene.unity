@@ -1,0 +1,925 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000001
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SkyboxMaterial: {fileID: 0}
+  m_Sun: {fileID: 0}
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+
+# ════════════════════════════════════════════
+# Main Camera + CameraController
+# ════════════════════════════════════════════
+--- !u!1 &100
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 101}
+  - component: {fileID: 102}
+  - component: {fileID: 103}
+  - component: {fileID: 104}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_IsActive: 1
+--- !u!4 &101
+Transform:
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!20 &102
+Camera:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.18, g: 0.18, b: 0.18, a: 1}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 6
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_OcclusionCulling: 1
+--- !u!81 &103
+AudioListener:
+  m_ObjectHideFlags: 0
+--- !u!114 &104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 11500000, guid: CameraController, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  zoomSpeed: 2
+  minZoom: 2
+  maxZoom: 20
+  panSpeed: 1
+  enableEdgePan: 0
+  edgePanMargin: 20
+  useBounds: 1
+  boundsPadding: 3
+
+# ════════════════════════════════════════════
+# EventSystem
+# ════════════════════════════════════════════
+--- !u!1 &150
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151}
+  - component: {fileID: 152}
+  - component: {fileID: 153}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_IsActive: 1
+--- !u!4 &151
+Transform:
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!114 &152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: -619905303, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+
+# ════════════════════════════════════════════
+# BoardRoot (완성된 조각들의 부모)
+# ════════════════════════════════════════════
+--- !u!1 &200
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 201}
+  m_Layer: 0
+  m_Name: BoardRoot
+  m_TagString: Untagged
+  m_IsActive: 1
+--- !u!4 &201
+Transform:
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+
+# ════════════════════════════════════════════
+# ScatterRoot (흩어진 조각들의 부모)
+# ════════════════════════════════════════════
+--- !u!1 &250
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 251}
+  m_Layer: 0
+  m_Name: ScatterRoot
+  m_TagString: Untagged
+  m_IsActive: 1
+--- !u!4 &251
+Transform:
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+
+# ════════════════════════════════════════════
+# PuzzleManager + ConfettiEffect
+# ════════════════════════════════════════════
+--- !u!1 &300
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 301}
+  - component: {fileID: 302}
+  - component: {fileID: 303}
+  m_Layer: 0
+  m_Name: PuzzleManager
+  m_TagString: Untagged
+  m_IsActive: 1
+--- !u!4 &301
+Transform:
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+--- !u!114 &302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 11500000, guid: PuzzleManager, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  piecePrefab: {fileID: 100000, guid: PuzzlePiecePrefab, type: 3}
+  boardRoot: {fileID: 201}
+  scatterRoot: {fileID: 251}
+  pieceWorldSize: 1
+  snapDistance: 0.35
+--- !u!114 &303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ConfettiEffect, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  burstCount: 150
+  speed: 5
+  lifetime: 3
+  spread: 6
+
+# ════════════════════════════════════════════
+# Canvas (GameUICanvas)
+# ════════════════════════════════════════════
+--- !u!1 &400
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401}
+  - component: {fileID: 402}
+  - component: {fileID: 403}
+  - component: {fileID: 404}
+  - component: {fileID: 405}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_IsActive: 1
+--- !u!224 &401
+RectTransform:
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 501}
+  - {fileID: 601}
+  - {fileID: 701}
+  - {fileID: 801}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!223 &402
+Canvas:
+  m_ObjectHideFlags: 0
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1280, y: 720}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.5
+--- !u!114 &404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: -1302539562, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+--- !u!114 &405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_Script: {fileID: 11500000, guid: UIManager, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  timerText: {fileID: 512}
+  progressText: {fileID: 522}
+  progressSlider: {fileID: 532}
+  previewButton: {fileID: 542}
+  previewPanel: {fileID: 601}
+  previewImage: {fileID: 612}
+  edgeSortButton: {fileID: 552}
+  pausePanel: {fileID: 701}
+  pauseButton: {fileID: 562}
+  resumeButton: {fileID: 712}
+  restartButton: {fileID: 722}
+  mainMenuButton: {fileID: 732}
+  clearPanel: {fileID: 801}
+  clearTimeText: {fileID: 812}
+  clearPiecesText: {fileID: 822}
+  clearMenuButton: {fileID: 832}
+  clearRestartButton: {fileID: 842}
+  confettiEffect: {fileID: 0}
+
+# ════════════════════════════════════════════
+# HUDPanel
+# ════════════════════════════════════════════
+--- !u!1 &500
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 501}
+  - component: {fileID: 502}
+  m_Layer: 5
+  m_Name: HUDPanel
+  m_IsActive: 1
+--- !u!224 &501
+RectTransform:
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 511}
+  - {fileID: 521}
+  - {fileID: 531}
+  - {fileID: 541}
+  - {fileID: 551}
+  - {fileID: 561}
+  m_Father: {fileID: 401}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 70}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &502
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.05, g: 0.05, b: 0.1, a: 0.85}
+
+# TimerText
+--- !u!1 &510
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 511}
+  - component: {fileID: 512}
+  m_Layer: 5
+  m_Name: TimerText
+  m_IsActive: 1
+--- !u!224 &511
+RectTransform:
+  m_Father: {fileID: 501}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 90, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &512
+MonoBehaviour:
+  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
+  m_text: "00:00"
+  m_fontSize: 32
+  m_fontStyle: 1
+  m_color: {r: 1, g: 1, b: 1, a: 1}
+  m_alignment: 4
+
+# ProgressText
+--- !u!1 &520
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521}
+  - component: {fileID: 522}
+  m_Layer: 5
+  m_Name: ProgressText
+  m_IsActive: 1
+--- !u!224 &521
+RectTransform:
+  m_Father: {fileID: 501}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -160, y: 0}
+  m_SizeDelta: {x: 160, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &522
+MonoBehaviour:
+  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
+  m_text: "0 / 0"
+  m_fontSize: 26
+  m_color: {r: 0.8, g: 1, b: 0.8, a: 1}
+  m_alignment: 4
+
+# ProgressSlider
+--- !u!1 &530
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531}
+  - component: {fileID: 532}
+  m_Layer: 5
+  m_Name: ProgressSlider
+  m_IsActive: 1
+--- !u!224 &531
+RectTransform:
+  m_Father: {fileID: 501}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 80, y: 0}
+  m_SizeDelta: {x: 300, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &532
+MonoBehaviour:
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 0
+  m_Direction: 0
+  m_Value: 0
+  m_WholeNumbers: 1
+  m_MinValue: 0
+  m_MaxValue: 25
+
+# PreviewButton
+--- !u!1 &540
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541}
+  - component: {fileID: 543}
+  - component: {fileID: 542}
+  m_Layer: 5
+  m_Name: PreviewButton
+  m_IsActive: 1
+--- !u!224 &541
+RectTransform:
+  m_Father: {fileID: 501}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -250, y: 0}
+  m_SizeDelta: {x: 120, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &543
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.2, g: 0.5, b: 0.9, a: 1}
+--- !u!114 &542
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 543}
+
+# EdgeSortButton
+--- !u!1 &550
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 551}
+  - component: {fileID: 553}
+  - component: {fileID: 552}
+  m_Layer: 5
+  m_Name: EdgeSortButton
+  m_IsActive: 1
+--- !u!224 &551
+RectTransform:
+  m_Father: {fileID: 501}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -120, y: 0}
+  m_SizeDelta: {x: 120, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &553
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.8, g: 0.6, b: 0.1, a: 1}
+--- !u!114 &552
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 553}
+
+# PauseButton
+--- !u!1 &560
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561}
+  - component: {fileID: 563}
+  - component: {fileID: 562}
+  m_Layer: 5
+  m_Name: PauseButton
+  m_IsActive: 1
+--- !u!224 &561
+RectTransform:
+  m_Father: {fileID: 501}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -30, y: 0}
+  m_SizeDelta: {x: 50, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &563
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &562
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 563}
+
+# ════════════════════════════════════════════
+# PreviewPanel (기본 비활성)
+# ════════════════════════════════════════════
+--- !u!1 &600
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601}
+  - component: {fileID: 602}
+  m_Layer: 5
+  m_Name: PreviewPanel
+  m_IsActive: 0
+--- !u!224 &601
+RectTransform:
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 611}
+  m_Father: {fileID: 401}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 700, y: 500}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &602
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.85}
+
+# PreviewImage (RawImage)
+--- !u!1 &610
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 611}
+  - component: {fileID: 612}
+  m_Layer: 5
+  m_Name: PreviewImage
+  m_IsActive: 1
+--- !u!224 &611
+RectTransform:
+  m_Father: {fileID: 601}
+  m_AnchorMin: {x: 0.05, y: 0.05}
+  m_AnchorMax: {x: 0.95, y: 0.95}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &612
+MonoBehaviour:
+  m_Script: {fileID: -1210905831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+
+# ════════════════════════════════════════════
+# PausePanel (기본 비활성)
+# ════════════════════════════════════════════
+--- !u!1 &700
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701}
+  - component: {fileID: 702}
+  m_Layer: 5
+  m_Name: PausePanel
+  m_IsActive: 0
+--- !u!224 &701
+RectTransform:
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 711}
+  - {fileID: 721}
+  - {fileID: 731}
+  - {fileID: 741}
+  - {fileID: 751}
+  m_Father: {fileID: 401}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &702
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.75}
+
+# PauseTitleText
+--- !u!1 &710
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 711}
+  - component: {fileID: 713}
+  m_Layer: 5
+  m_Name: PauseTitleText
+  m_IsActive: 1
+--- !u!224 &711
+RectTransform:
+  m_Father: {fileID: 701}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 120}
+  m_SizeDelta: {x: 400, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &713
+MonoBehaviour:
+  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
+  m_text: "⏸ 일시정지"
+  m_fontSize: 48
+  m_fontStyle: 1
+  m_color: {r: 1, g: 1, b: 1, a: 1}
+  m_alignment: 4
+
+# ResumeButton
+--- !u!1 &710
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 711}
+  - component: {fileID: 714}
+  - component: {fileID: 712}
+  m_Layer: 5
+  m_Name: ResumeButton
+  m_IsActive: 1
+--- !u!224 &711
+RectTransform:
+  m_Father: {fileID: 701}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: 280, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &714
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.2, g: 0.8, b: 0.3, a: 1}
+--- !u!114 &712
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 714}
+
+# RestartButton
+--- !u!1 &720
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 721}
+  - component: {fileID: 723}
+  - component: {fileID: 722}
+  m_Layer: 5
+  m_Name: RestartButton
+  m_IsActive: 1
+--- !u!224 &721
+RectTransform:
+  m_Father: {fileID: 701}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 280, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &723
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.9, g: 0.6, b: 0.1, a: 1}
+--- !u!114 &722
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 723}
+
+# MainMenuButton (Pause)
+--- !u!1 &730
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731}
+  - component: {fileID: 733}
+  - component: {fileID: 732}
+  m_Layer: 5
+  m_Name: MainMenuButton
+  m_IsActive: 1
+--- !u!224 &731
+RectTransform:
+  m_Father: {fileID: 701}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -130}
+  m_SizeDelta: {x: 280, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &733
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &732
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 733}
+
+# ════════════════════════════════════════════
+# ClearPanel (기본 비활성)
+# ════════════════════════════════════════════
+--- !u!1 &800
+GameObject:
+  m_ObjectHideFlags: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 801}
+  - component: {fileID: 802}
+  m_Layer: 5
+  m_Name: ClearPanel
+  m_IsActive: 0
+--- !u!224 &801
+RectTransform:
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 811}
+  - {fileID: 821}
+  - {fileID: 831}
+  - {fileID: 841}
+  - {fileID: 851}
+  - {fileID: 861}
+  m_Father: {fileID: 401}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &802
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+
+# ClearTitleText
+--- !u!1 &810
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 811}
+  - component: {fileID: 813}
+  m_Layer: 5
+  m_Name: ClearTitleText
+  m_IsActive: 1
+--- !u!224 &811
+RectTransform:
+  m_Father: {fileID: 801}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 600, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &813
+MonoBehaviour:
+  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
+  m_text: "🎉 퍼즐 완성!"
+  m_fontSize: 60
+  m_fontStyle: 1
+  m_color: {r: 1, g: 0.9, b: 0.1, a: 1}
+  m_alignment: 4
+
+# ClearTimeText
+--- !u!1 &820
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821}
+  - component: {fileID: 812}
+  m_Layer: 5
+  m_Name: ClearTimeText
+  m_IsActive: 1
+--- !u!224 &821
+RectTransform:
+  m_Father: {fileID: 801}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: 500, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &812
+MonoBehaviour:
+  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
+  m_text: "완성 시간: 00:00"
+  m_fontSize: 34
+  m_color: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+  m_alignment: 4
+
+# ClearPiecesText
+--- !u!1 &823
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824}
+  - component: {fileID: 822}
+  m_Layer: 5
+  m_Name: ClearPiecesText
+  m_IsActive: 1
+--- !u!224 &824
+RectTransform:
+  m_Father: {fileID: 801}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 10}
+  m_SizeDelta: {x: 500, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &822
+MonoBehaviour:
+  m_Script: {fileID: -1030070103, guid: f4688fdb7825b5b45b08f497036a1f85, type: 3}
+  m_text: "총 조각: 25개"
+  m_fontSize: 28
+  m_color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  m_alignment: 4
+
+# ClearMenuButton
+--- !u!1 &830
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831}
+  - component: {fileID: 833}
+  - component: {fileID: 832}
+  m_Layer: 5
+  m_Name: ClearMenuButton
+  m_IsActive: 1
+--- !u!224 &831
+RectTransform:
+  m_Father: {fileID: 801}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -160, y: -80}
+  m_SizeDelta: {x: 260, y: 65}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &833
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.4, g: 0.4, b: 0.8, a: 1}
+--- !u!114 &832
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 833}
+
+# ClearRestartButton
+--- !u!1 &840
+GameObject:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841}
+  - component: {fileID: 843}
+  - component: {fileID: 842}
+  m_Layer: 5
+  m_Name: ClearRestartButton
+  m_IsActive: 1
+--- !u!224 &841
+RectTransform:
+  m_Father: {fileID: 801}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 160, y: -80}
+  m_SizeDelta: {x: 260, y: 65}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &843
+MonoBehaviour:
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Color: {r: 0.1, g: 0.7, b: 0.4, a: 1}
+--- !u!114 &842
+MonoBehaviour:
+  m_Script: {fileID: 392529613, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 843}
